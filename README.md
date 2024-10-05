@@ -21,6 +21,8 @@ If chrome crashes, then won't launch again:
 rm -rf ~/.config/google-chrome/Singleton*
 ```
 
+- https://forums.fedoraforum.org/showthread.php?332678-Google-chrome-doesn-t-start&p=1883589#post1883589
+
 If you can't update Chrome through the browser, then update
 through dnf:
 
