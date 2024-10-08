@@ -6,11 +6,11 @@ reinstall.
 ## Chrome
 
 ```sh
-$ sudo dnf install fedora-workstation-repositories
+sudo dnf install fedora-workstation-repositories
 
-$ sudo dnf config-manager --set-enabled google-chrome
+sudo dnf config-manager --set-enabled google-chrome
 
-$ sudo dnf install google-chrome-stable
+sudo dnf install google-chrome-stable
 ```
 
 ### Chrome silliness
@@ -44,10 +44,10 @@ Get legacy color schemes:
 - https://github.com/vim/colorschemes/tree/master/legacy_colors
 
 ```sh
-$ git clone https://github.com/vim/colorschemes.git
-$ cd colorschemes/legacy_colors/
-$ mkdir -p ~/.vim/colors
-$ cp elflord.vim ~/.vim/colors/
+git clone https://github.com/vim/colorschemes.git
+cd colorschemes/legacy_colors/
+mkdir -p ~/.vim/colors
+cp elflord.vim ~/.vim/colors/
 ```
 
 ### vimrc
@@ -105,15 +105,21 @@ References:
 Git aliases
 
 ```sh
-$ git config --global alias.co checkout
-$ git config --global alias.br branch
+git config --global alias.co checkout
+git config --global alias.br branch
 ```
 
 Git global user config
 
 ```sh
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+```
+
+Git credential store. This will save credentials plaintext:
+
+```
+git config --global credential.helper store
 ```
 
 ## Install Kernel Src Tree
@@ -131,6 +137,15 @@ block          fs        Kconfig   mm                scripts     usr
 certs          include   kernel    Module.symvers    security    virt
 crypto         init      lib       net               sound       vmlinux.h
 Documentation  io_uring  Makefile  rust              System.map  vmlinux.id
+```
+
+## GNU toolchain
+
+```
+sudo dnf install autoconf
+sudo dnf install automake
+sudo dnf install libtool
+sudo dnf install perl
 ```
 
 ## gcc-arm-none-eabi-
