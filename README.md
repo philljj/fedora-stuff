@@ -148,14 +148,36 @@ sudo dnf install libtool
 sudo dnf install perl
 ```
 
+## ssh server
+
+install:
+
+```
+sudo dnf install openssh-server
+```
+
+start:
+
+```
+systemctl start sshd.service
+```
+
+## Useful tools
+
+```
+sudo dnf install meld
+```
+
+
 ## gcc-arm-none-eabi-
 
 ```
 sudo dnf install arm-none-eabi-gcc-cs
 ```
 
-May also require
+May also require:
 
 ```
-dnf install ncurses-compat-libs
+sudo dnf install ncurses-compat-libs
+sudo dnf install arm-none-eabi-newlib
 ```
