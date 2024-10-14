@@ -35,7 +35,7 @@ sudo dnf update google-chrome-stable
 Get full vim install, not just minimal:
 
 ```sh
-$sudo dnf install vim
+sudo dnf install vim
 ```
 
 ### Colors
