@@ -166,6 +166,7 @@ systemctl start sshd.service
 
 ```
 sudo dnf install meld
+sudo dnf install lm_sensors
 ```
 
 
