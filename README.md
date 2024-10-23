@@ -148,6 +148,13 @@ sudo dnf install libtool
 sudo dnf install perl
 ```
 
+## Useful packages
+
+```
+sudo dnf install libevent
+sudo dnf install libevent-devel
+```
+
 ## ssh server
 
 install:
