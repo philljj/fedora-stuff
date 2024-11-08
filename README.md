@@ -153,6 +153,7 @@ sudo dnf install perl
 ```
 sudo dnf install libevent
 sudo dnf install libevent-devel
+sudo dnf install libpsl-devel # for building libcurl
 ```
 
 ## ssh server
