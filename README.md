@@ -146,6 +146,7 @@ sudo dnf install autoconf
 sudo dnf install automake
 sudo dnf install libtool
 sudo dnf install perl
+sudo dnf install libasan
 ```
 
 ## Useful packages
