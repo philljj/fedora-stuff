@@ -155,6 +155,9 @@ sudo dnf install libasan
 sudo dnf install libevent
 sudo dnf install libevent-devel
 sudo dnf install libpsl-devel # for building libcurl
+sudo dnf install cmake # needed for west zephyr builds
+sudo dnf install ninja-build # needed for west zephyr builds
+pip3 install pyelftools # needed for west zephyr builds
 ```
 
 ## ssh server
