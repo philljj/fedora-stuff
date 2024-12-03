@@ -152,6 +152,8 @@ sudo dnf install libasan
 ## Useful packages
 
 ```
+sudo dnf install libgcrypt
+sudo dnf install libgcrypt-devel
 sudo dnf install libevent
 sudo dnf install libevent-devel
 sudo dnf install libpsl-devel # for building libcurl
