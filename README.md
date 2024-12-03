@@ -152,6 +152,7 @@ sudo dnf install libasan
 ## Useful packages
 
 ```
+sudo dnf builddep systemd #systemd dependencies
 sudo dnf install libgcrypt
 sudo dnf install libgcrypt-devel
 sudo dnf install libevent
