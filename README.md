@@ -161,6 +161,7 @@ sudo dnf install libpsl-devel # for building libcurl
 sudo dnf install cmake # needed for west zephyr builds
 sudo dnf install ninja-build # needed for west zephyr builds
 pip3 install pyelftools # needed for west zephyr builds
+sudo dnf install libpcap-devel # for testing lwip
 ```
 
 ## ssh server
