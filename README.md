@@ -149,9 +149,24 @@ sudo dnf install perl
 sudo dnf install libasan
 ```
 
+## Essential packages
+
+```
+sudo dnf install openssl
+sudo dnf install qemu
+sudo dnf install dracut
+sudo dnf install expect
+sudo dnf install clang
+sudo dnf install clang-devel
+sudo dnf install glibc
+sudo dnf install glibc-static
+sudo dnf install busybox
+```
+
 ## Useful packages
 
 ```
+sudo dnf install sensors
 sudo dnf builddep systemd #systemd dependencies
 sudo dnf install libgcrypt
 sudo dnf install libgcrypt-devel
