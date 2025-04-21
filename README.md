@@ -152,6 +152,7 @@ sudo dnf install libasan
 ## Essential packages
 
 ```
+sudo dnf install valgrind
 sudo dnf install openssl
 sudo dnf install qemu
 sudo dnf install dracut
@@ -161,6 +162,8 @@ sudo dnf install clang-devel
 sudo dnf install glibc
 sudo dnf install glibc-static
 sudo dnf install busybox
+sudo dnf install shellcheck
+sudo dnf install cppcheck
 ```
 
 ## Useful packages
