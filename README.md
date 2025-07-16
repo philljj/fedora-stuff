@@ -152,10 +152,13 @@ sudo dnf install libasan
 ## Essential packages
 
 ```
+sudo dnf install flex bison
+sudo dnf install elfutils-libelf-devel
 sudo dnf install pcre2grep
 sudo dnf install patch
 sudo dnf install valgrind
 sudo dnf install openssl
+sudo dnf install openssl-devel
 sudo dnf install qemu
 sudo dnf install dracut
 sudo dnf install expect
