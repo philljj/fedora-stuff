@@ -152,6 +152,8 @@ sudo dnf install libasan
 ## Essential packages
 
 ```
+sudo dnf install pcre2grep
+sudo dnf install patch
 sudo dnf install valgrind
 sudo dnf install openssl
 sudo dnf install qemu
