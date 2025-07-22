@@ -169,6 +169,8 @@ sudo dnf install glibc-static
 sudo dnf install busybox
 sudo dnf install shellcheck
 sudo dnf install cppcheck
+sudo dnf install check
+sudo dnf install check-devel
 ```
 
 ## Useful packages
