@@ -223,3 +223,9 @@ May also require:
 sudo dnf install ncurses-compat-libs
 sudo dnf install arm-none-eabi-newlib
 ```
+
+## powerpc cross compile
+
+```
+sudo dnf install gcc-powerpc64-linux-gnu
+```
