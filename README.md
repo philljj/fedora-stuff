@@ -229,3 +229,9 @@ sudo dnf install arm-none-eabi-newlib
 ```
 sudo dnf install gcc-powerpc64-linux-gnu
 ```
+
+## more qemu
+
+```
+sudo dnf install qemu-system-ppc virt-install libvirt-daemon-kvm
+```
