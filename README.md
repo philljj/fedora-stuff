@@ -235,3 +235,18 @@ sudo dnf install gcc-powerpc64-linux-gnu
 ```
 sudo dnf install qemu-system-ppc virt-install libvirt-daemon-kvm
 ```
+
+# FreeBSD stuff too
+
+## Date
+
+Set date and time:
+```
+sudo service ntpdate onestart
+```
+
+Enable time sync:
+```
+sudo sysrc ntpd_enable="YES"
+sudo service ntpd start
+```
