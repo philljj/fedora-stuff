@@ -250,3 +250,17 @@ Enable time sync:
 sudo sysrc ntpd_enable="YES"
 sudo service ntpd start
 ```
+
+# Fedora Gaming
+
+## DooM
+
+nalika gzdoom seems to be well supported:
+```sh
+sudo dnf copr enable nalika/gzdoom
+sudo dnf install gzdoom
+```
+
+## wine
+
+todo
