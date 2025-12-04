@@ -1,0 +1,12 @@
+#!/bin/sh
+# convenience script to check and unload libwolfssl.ko on FreeBSD.
+
+if [ $# -eq 0 ]; then
+  echo "unload wolf driver module"
+  kldstat -m nexus/libwolfssl && sudo kldunload libwolfssl && kldstat
+else
+  echo "unload wolf module"
+  kldstat -m libwolfssl && sudo kldunload libwolfssl && kldstat
+fi
+
+echo "unload done"

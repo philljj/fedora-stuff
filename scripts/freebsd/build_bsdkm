@@ -1,0 +1,28 @@
+#!/bin/sh
+# convenience script to build libwolfssl.ko on FreeBSD.
+
+if [ $# -eq 0 ]; then
+  echo "register build"; sleep 1;
+  ./configure --enable-freebsdkm --enable-cryptonly \
+    --enable-crypttests --enable-freebsdkm-crypto-register \
+    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    || exit 1
+else
+  echo "normal build"; sleep 1;
+  ./configure --enable-freebsdkm --enable-cryptonly \
+    --enable-crypttests  --enable-all-crypto \
+    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    || exit 1
+fi
+
+make && sudo kldload bsdkm/libwolfssl.ko || exit 1
+
+dmesg | tail -n5
+
+if [ $# -eq 0 ]; then
+  kldstat -m nexus/libwolfssl
+else
+  kldstat -m wolfssl
+fi
+
+echo "load done"
