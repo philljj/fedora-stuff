@@ -5,6 +5,7 @@ if [ $# -eq 0 ]; then
   echo "register build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-freebsdkm-crypto-register \
+    --enable-aesgcm-stream \
     CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
     || exit 1
 else
