@@ -12,6 +12,7 @@ else
   echo "normal build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests  --enable-all-crypto \
+    --enable-fips=disabled --enable-debug \
     CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
     || exit 1
 fi
@@ -23,7 +24,7 @@ dmesg | tail -n5
 if [ $# -eq 0 ]; then
   kldstat -m nexus/libwolfssl
 else
-  kldstat -m wolfssl
+  kldstat -m libwolfssl
 fi
 
 echo "load done"
