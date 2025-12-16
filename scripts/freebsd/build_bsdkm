@@ -16,7 +16,7 @@ elif [ $# -eq 1 ]; then
     CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
     || exit 1
 else
-  echo "normal build"; sleep 1;
+  echo "normal fips build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-all-crypto \
     --enable-fips=dev --enable-debug \
