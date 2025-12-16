@@ -20,7 +20,7 @@ else
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-all-crypto \
     --enable-fips=dev --enable-debug \
-    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DDEBUG_FIPS_VERBOSE" \
     || exit 1
 fi
 
