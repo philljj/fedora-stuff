@@ -8,11 +8,18 @@ if [ $# -eq 0 ]; then
     --enable-aesgcm-stream \
     CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
     || exit 1
-else
+elif [ $# -eq 1 ]; then
   echo "normal build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests  --enable-all-crypto \
     --enable-fips=disabled --enable-debug \
+    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    || exit 1
+else
+  echo "normal build"; sleep 1;
+  ./configure --enable-freebsdkm --enable-cryptonly \
+    --enable-crypttests --enable-all-crypto \
+    --enable-fips=dev --enable-debug \
     CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
     || exit 1
 fi
