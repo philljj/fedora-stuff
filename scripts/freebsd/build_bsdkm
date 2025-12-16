@@ -1,26 +1,29 @@
 #!/bin/sh
 # convenience script to build libwolfssl.ko on FreeBSD.
+BASE_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG"
 
 if [ $# -eq 0 ]; then
   echo "register build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-freebsdkm-crypto-register \
     --enable-aesgcm-stream \
-    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    CFLAGS="$BASE_CFLAGS" \
     || exit 1
 elif [ $# -eq 1 ]; then
   echo "normal build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests  --enable-all-crypto \
     --enable-fips=disabled --enable-debug \
-    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG" \
+    CFLAGS="$BASE_CFLAGS" \
     || exit 1
-else
+elif [ $# -eq 3 ]; then
+  fips_hash=$3
+  FIPS_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DDEBUG_FIPS_VERBOSE -DWOLFCRYPT_FIPS_CORE_HASH_VALUE=$fips_hash"
   echo "normal fips build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-all-crypto \
     --enable-fips=dev --enable-debug \
-    CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DDEBUG_FIPS_VERBOSE" \
+    CFLAGS="$BASE_CFLAGS $FIPS_CFLAGS" \
     || exit 1
 fi
 
