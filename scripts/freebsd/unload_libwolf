@@ -4,9 +4,12 @@
 if [ $# -eq 0 ]; then
   echo "unload wolf driver module"
   kldstat -m nexus/libwolfssl && sudo kldunload libwolfssl && kldstat
-else
+elif [ $# -eq 1 ]; then
   echo "unload wolf module"
   kldstat -m libwolfssl && sudo kldunload libwolfssl && kldstat
+elif [ $# -eq 2 ]; then
+  echo "unload wolf fips module"
+  kldstat -m libwolfssl_fips && sudo kldunload libwolfssl && kldstat
 fi
 
 echo "unload done"

@@ -51,8 +51,10 @@ dmesg | tail -n5
 
 if [ $# -eq 0 ]; then
   kldstat -m nexus/libwolfssl
-else
+elif [ $# -eq 1 ]; then
   kldstat -m libwolfssl
+elif [ $# -eq 3 ]; then
+  kldstat -m libwolfssl_fips
 fi
 
 echo "load done"
