@@ -2,7 +2,20 @@
 # convenience script to build libwolfssl.ko on FreeBSD.
 BASE_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG"
 
+if [ $# -eq 1 ]; then
+  if [ $1 == "-?" ]; then
+    echo "usage:"
+    echo "  ~/bin/build_bsdkm"
+    echo ""
+    echo "  ~/bin/build_bsdkm normal fips"
+    echo ""
+    echo "  ~/bin/build_bsdkm normal fips 015A8DE05FD9325B00E324DB773D5BCC8539F4F59286A9728461041DE83C644F"
+    exit 1
+  fi
+fi
+
 if [ $# -eq 0 ]; then
+  # ~/bin/build_bsdkm
   echo "register build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests --enable-freebsdkm-crypto-register \
@@ -10,6 +23,7 @@ if [ $# -eq 0 ]; then
     CFLAGS="$BASE_CFLAGS" \
     || exit 1
 elif [ $# -eq 1 ]; then
+  # ~/bin/build_bsdkm normal
   echo "normal build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
     --enable-crypttests  --enable-all-crypto \
@@ -17,15 +31,19 @@ elif [ $# -eq 1 ]; then
     CFLAGS="$BASE_CFLAGS" \
     || exit 1
 elif [ $# -eq 3 ]; then
+  # ~/bin/build_bsdkm normal fips 015A8DE05FD9325B00E324DB773D5BCC8539F4F59286A9728461041DE83C644F
   fips_hash=$3
-  FIPS_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DDEBUG_FIPS_VERBOSE -DWOLFCRYPT_FIPS_CORE_HASH_VALUE=$fips_hash"
+  FIPS_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DWOLFCRYPT_FIPS_CORE_HASH_VALUE=$fips_hash"
   echo "normal fips build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
-    --enable-crypttests --enable-all-crypto \
-    --enable-fips=dev --enable-debug \
+    --enable-crypttests \
+    --enable-fips=v6 \
     CFLAGS="$BASE_CFLAGS $FIPS_CFLAGS" \
     || exit 1
 fi
+#  FIPS_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DDEBUG_FIPS_VERBOSE -DWOLFCRYPT_FIPS_CORE_HASH_VALUE=$fips_hash"
+#    --enable-crypttests --enable-all-crypto \
+#    --enable-fips=dev \
 
 make && sudo kldload bsdkm/libwolfssl.ko || exit 1
 
