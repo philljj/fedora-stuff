@@ -24,11 +24,16 @@ if [ $# -eq 0 ]; then
     || exit 1
 elif [ $# -eq 1 ]; then
   # ~/bin/build_bsdkm normal
+  #  --enable-fips=disabled --enable-debug
+  #  --enable-kernel-benchmarks --enable-sp-asm \
+  # --enable-kernel-benchmarks --enable-asm --enable-aesni
+  # --enable-kernel-benchmarks --enable-asm --enable-sp-asm --enable-aesni
+  # --enable-crypttests --enable-all-crypto --enable-aesgcm-stream --enable-aesxts --enable-aesxts-stream
   echo "normal build"; sleep 1;
   ./configure --enable-freebsdkm --enable-cryptonly \
-    --enable-crypttests  --enable-all-crypto \
-    --enable-fips=disabled --enable-debug \
-    CFLAGS="$BASE_CFLAGS" \
+    --enable-crypttests --enable-aesgcm-stream --enable-aesxts --enable-aesxts-stream \
+    --enable-kernel-benchmarks --enable-asm --enable-aesni \
+    CFLAGS="$BASE_CFLAGS -DWOLFSSL_BSDKM_FPU_DEBUG" \
     || exit 1
 elif [ $# -eq 3 ]; then
   # ~/bin/build_bsdkm normal fips 015A8DE05FD9325B00E324DB773D5BCC8539F4F59286A9728461041DE83C644F
