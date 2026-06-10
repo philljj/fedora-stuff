@@ -263,4 +263,14 @@ sudo dnf install gzdoom
 
 ## wine
 
-todo
+```sh
+sudo dnf install wine
+```
+
+Setup is easier on Fedora 44:
+```sh
+mkdir -p ~/games/example_game
+export WINEPREFIX=$HOME/games/example_game
+wineboot
+winecfg
+```
