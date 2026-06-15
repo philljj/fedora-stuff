@@ -236,21 +236,6 @@ sudo dnf install gcc-powerpc64-linux-gnu
 sudo dnf install qemu-system-ppc virt-install libvirt-daemon-kvm
 ```
 
-# FreeBSD stuff too
-
-## Date
-
-Set date and time:
-```
-sudo service ntpdate onestart
-```
-
-Enable time sync:
-```
-sudo sysrc ntpd_enable="YES"
-sudo service ntpd start
-```
-
 # Fedora Gaming
 
 ## DooM
@@ -273,4 +258,27 @@ mkdir -p ~/games/example_game
 export WINEPREFIX=$HOME/games/example_game
 wineboot
 winecfg
+```
+
+# FreeBSD stuff too
+
+Build bsdkm driver:
+```
+#!/bin/sh
+BSDKM_CFLAGS="-DWOLFSSL_BSDKM_VERBOSE_DEBUG -DWOLFSSL_BSDKM_FPU_DEBUG"
+
+./configure --enable-freebsdkm --enable-freebsdkm-crypto-register \
+  --enable-cryptonly --enable-crypttests \
+  --enable-kernel-benchmarks --enable-all-crypto --enable-aesni \
+  --enable-aesni-with-avx \
+  CFLAGS="$BSDKM_CFLAGS" && make \
+  || exit 1
+
+file bsdkm/libwolfssl.ko && sudo kldload bsdkm/libwolfssl.ko || exit 1
+```
+
+Set date & time:
+```
+#!/bin/sh
+sudo service ntpdate onestart
 ```
