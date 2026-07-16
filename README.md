@@ -177,6 +177,7 @@ sudo dnf install check-devel
 
 ```
 sudo dnf install sensors
+sudo dnf install nethogs
 sudo dnf builddep systemd #systemd dependencies
 sudo dnf install libgcrypt
 sudo dnf install libgcrypt-devel
