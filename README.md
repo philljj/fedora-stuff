@@ -53,7 +53,7 @@ cp elflord.vim ~/.vim/colors/
 ### vimrc
 
 Get my vimrc:
-- https://github.com/philljj/vimrc/blob/master/vimrc
+- https://github.com/philljj/vimrc
 
 ## Bashrc
 
