@@ -57,10 +57,15 @@ Get my vimrc:
 
 ## Bashrc
 
-Title function, and shorten terminal cmd prompt.
+Handy things. Add these to top of bashrc:
 
-Add this to top of bashrc:
+- Cap man page column width at 70:
+```sh
+# cap man page column width at 70
+export MANWIDTH=70
+```
 
+- Title function, and shorten terminal cmd prompt.
 ```sh
 # Set title to arg passed, or to current dir.
 # Attribution:
