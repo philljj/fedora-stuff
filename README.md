@@ -87,6 +87,23 @@ function ttl() {
 # Shorten cmd prompt.
 export PS1="[\u \W]\$"
 ```
+## Codex CLI
+
+```sh
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+
+## Github CLI
+
+```sh
+sudo dnf install gh
+```
+
+## Python3
+
+```sh
+sudo dnf install python3-jinja2
+```
 
 ## Desktop background
 
@@ -152,6 +169,7 @@ sudo dnf install automake
 sudo dnf install libtool
 sudo dnf install perl
 sudo dnf install libasan
+sudo dnf install libtsan
 ```
 
 ## Essential packages
