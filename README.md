@@ -170,6 +170,7 @@ sudo dnf install libtool
 sudo dnf install perl
 sudo dnf install libasan
 sudo dnf install libtsan
+sudo dnf install libubsan libubsan-static
 ```
 
 ## Essential packages
