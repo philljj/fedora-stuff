@@ -255,10 +255,54 @@ sudo dnf install arm-none-eabi-newlib
 sudo dnf install gcc-powerpc64-linux-gnu
 ```
 
+## aarch64 cross compile
+```
+sudo dnf install gcc-aarch64-linux-gnu
+sudo dnf install sysroot-aarch64-fc44-glibc
+sudo dnf install binutils-aarch64-linux-gnu
+```
+
+## crosstools-ng
+
+```
+git clone https://github.com/crosstool-ng/crosstool-ng.git
+cd crosstool-ng
+./bootstrap
+./configure --prefix="$HOME/.local"
+make
+sudo make install
+```
+
+Then
+```
+cd ~/work/
+mkdir ct-ng
+cd ct-ng/
+ttl
+ct-ng list-samples | grep aarch64-unknown-linux-gnu
+mkdir aarch64
+cd aarch64/
+ct-ng aarch64-unknown-linux-gnu
+ct-ng menuconfig
+# 1. Set curl for Download agent (fedora wget2 doesn't work as expected)
+# 2. disable static libstdcpp (fedora doesn't support)
+# 3. turnon sanitizer under c compiler
+time ct-ng build
+# takes about 45 min
+```
+
+Helper env script:
+```sh
+#!/bin/bash
+export PATH="$HOME/x-tools/aarch64-unknown-linux-gnu/bin:$PATH"
+SYSROOT="$(aarch64-unknown-linux-gnu-gcc -print-sysroot)"
+```
+
 ## more qemu
 
 ```
 sudo dnf install qemu-system-ppc virt-install libvirt-daemon-kvm
+sudo dnf install qemu-user-static-aarch64
 ```
 
 # Fedora Gaming
