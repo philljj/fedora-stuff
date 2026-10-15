@@ -217,6 +217,7 @@ sudo dnf install cmake # needed for west zephyr builds
 sudo dnf install ninja-build # needed for west zephyr builds
 pip3 install pyelftools # needed for west zephyr builds
 sudo dnf install libpcap-devel # for testing lwip
+sudo dnf install ruby ruby-devel rubygems
 ```
 
 ## ssh server
