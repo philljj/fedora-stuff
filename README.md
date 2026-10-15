@@ -59,6 +59,11 @@ Get my vimrc:
 
 Handy things. Add these to top of bashrc:
 
+- read only vim shortcut
+```sh
+alias vimr='vim -R'
+```
+
 - Cap man page column width at 70:
 ```sh
 # cap man page column width at 70
