@@ -395,7 +395,7 @@ for repo in "wolfssl" "wolfssh" "testing" "scripts" "osp"; do
       sort |
       uniq -c |
       sort -rn |
-      awk '{ total += $1; print } END { print "Total merged:", total }'
+      awk '{ total += $1; print } END { print "  Total merged:", total }'
 
   opened=$(gh api graphql \
       -f query="
@@ -410,7 +410,9 @@ for repo in "wolfssl" "wolfssh" "testing" "scripts" "osp"; do
       }" \
       --jq '.data.search.issueCount')
 
-  echo "Total opened: $opened"
+  echo "  Total opened: $opened"
+  echo ""
+  echo "-=+=-=+=-=+=-=+=-=+=-=+=-=+="
   echo ""
 done
 ```
