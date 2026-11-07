@@ -357,3 +357,60 @@ Set date & time:
 #!/bin/sh
 sudo service ntpdate onestart
 ```
+
+# GH API scripts
+
+## wolfssl repo stats
+
+Print total merges and opens by repos (yes this is ugly):
+
+```sh
+#!/bin/bash
+
+for repo in "wolfssl" "wolfssh" "testing" "scripts" "osp"; do
+  echo "$repo: PRs merged"
+  gh api graphql --paginate \
+      -f query="
+      query(\$endCursor: String) {
+        search(
+          query: \"repo:wolfSSL/$repo is:pr merged:2026-11-02..2026-11-09\"
+          type: ISSUE
+          first: 100
+          after: \$endCursor
+        ) {
+          nodes {
+            ... on PullRequest {
+              mergedBy { login }
+            }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }" \
+      --jq '.data.search.nodes[]
+            | select(.mergedBy.login != null)
+            | .mergedBy.login' |
+      sort |
+      uniq -c |
+      sort -rn |
+      awk '{ total += $1; print } END { print "Total merged:", total }'
+
+  opened=$(gh api graphql \
+      -f query="
+      {
+        search(
+          query: \"repo:wolfSSL/$repo is:pr created:2026-11-02..2026-11-09\"
+          type: ISSUE
+          first: 1
+        ) {
+          issueCount
+        }
+      }" \
+      --jq '.data.search.issueCount')
+
+  echo "Total opened: $opened"
+  echo ""
+done
+```
